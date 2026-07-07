@@ -1,4 +1,18 @@
 #!/usr/bin/env python3
+#
+# Copyright (C) 2026 Benjamin Nelson (Nelson Agentic)
+#
+# This program is free software: you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later
+# version. This program is distributed WITHOUT ANY WARRANTY; see the GNU General
+# Public License for more details. You should have received a copy of the
+# license with this program; if not, see <https://www.gnu.org/licenses/>.
+#
+# Developed with assistance from Anthropic's Claude.
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
 """Generate the Nelson Agentic co-branded PNG icons — standard library only.
 
 Design: charcoal outer ring, inner disc split into the four muted colors of

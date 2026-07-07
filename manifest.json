@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "T-Dog's AdBlocker",
   "version": "1.2.0",
-  "description": "Ultra-lightweight, dependency-free ad and tracker blocker by Nelson Agentic. Native declarativeNetRequest — zero per-request JavaScript.",
+  "description": "Lightweight, dependency-free ad & tracker blocker by Nelson Agentic. Native declarativeNetRequest, zero per-request JavaScript.",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",

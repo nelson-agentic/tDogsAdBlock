@@ -1,3 +1,21 @@
+/*
+ * T-Dog's AdBlocker — popup UI script.
+ *
+ * Copyright (C) 2026 Benjamin Nelson (Nelson Agentic)
+ *
+ * This program is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the Free
+ * Software Foundation, either version 3 of the License, or (at your option)
+ * any later version. This program is distributed WITHOUT ANY WARRANTY; see the
+ * GNU General Public License for more details. You should have received a copy
+ * of the license with this program; if not, see
+ * <https://www.gnu.org/licenses/>.
+ *
+ * Developed with assistance from Anthropic's Claude.
+ *
+ * SPDX-License-Identifier: GPL-3.0-or-later
+ */
+
 // T-Dog's AdBlocker popup — vanilla JS, no dependencies.
 const toggle = document.getElementById("toggle");
 const status = document.getElementById("status");

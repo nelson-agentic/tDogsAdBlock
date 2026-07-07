@@ -101,3 +101,16 @@ python3 scripts/build_published_list.py
   CORS-enabled URL, and DNR blocking rules need no host access. The extension
   never requests "read and change data on" any site and cannot read page
   content anywhere.
+
+## Credits
+
+- **Domain data** — the auto-updating blocklist merges a curated Nelson Agentic
+  list with [OISD Big](https://oisd.nl) by sjhgvr, a comprehensive, low
+  false-positive list used under its free-use terms. Thanks to the OISD project.
+- Developed with assistance from [Anthropic](https://www.anthropic.com)'s Claude.
+
+## License
+
+Copyright © 2026 Benjamin Nelson (Nelson Agentic). Licensed under the
+[GNU General Public License v3.0](LICENSE) or later
+(`SPDX-License-Identifier: GPL-3.0-or-later`).
