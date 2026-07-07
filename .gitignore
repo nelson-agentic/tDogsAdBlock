@@ -1,0 +1,15 @@
+# Build artifacts / packaging
+dist/
+
+# Chrome writes this next to the extension when loaded unpacked
+_metadata/
+
+# Python
+__pycache__/
+*.pyc
+
+# Editor / OS cruft
+.DS_Store
+
+# Local preview config (harmless, but not needed in the repo)
+.claude/

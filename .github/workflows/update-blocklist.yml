@@ -1,0 +1,45 @@
+name: Update blocklist
+
+# Rebuilds publish/nelson-agentic-blocklist.txt from your curated source plus
+# the upstream lists in scripts/build_published_list.py, and commits it only
+# when the set of domains actually changed. Users' extensions then pick up the
+# new list automatically (daily, or via "Update now").
+
+on:
+  schedule:
+    - cron: "0 6 * * *" # every day at 06:00 UTC
+  workflow_dispatch: {} # lets you run it manually from the Actions tab
+
+permissions:
+  contents: write # allow the action to commit the refreshed list
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Rebuild the blocklist, commit only if domains changed
+        run: |
+          FILE=publish/nelson-agentic-blocklist.txt
+          # Snapshot the current domains (ignore the dated header line).
+          OLD=$(grep -v '^#' "$FILE" 2>/dev/null | sort || true)
+
+          python3 scripts/build_published_list.py
+
+          NEW=$(grep -v '^#' "$FILE" | sort)
+          if [ "$OLD" = "$NEW" ]; then
+            echo "No domain changes — discarding header-only diff."
+            git checkout -- "$FILE" 2>/dev/null || true
+            exit 0
+          fi
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add "$FILE"
+          git commit -m "chore: refresh blocklist ($(date -u +%Y-%m-%d))"
+          git push

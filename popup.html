@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<style>
+  :root {
+    color-scheme: light dark;
+    --charcoal: #3f3f3f;
+    --amber: #d99a2b;
+  }
+  body {
+    width: 280px;
+    margin: 0;
+    font: 14px/1.4 system-ui, sans-serif;
+    padding: 14px 16px 16px;
+  }
+  h1 { font-size: 15px; margin: 0; display: flex; align-items: center; gap: 8px; }
+  .title-link { color: inherit; text-decoration: none; }
+  .title-link:hover { text-decoration: underline; }
+  .brand {
+    font-size: 10px; font-weight: 800; letter-spacing: .14em;
+    margin: 2px 0 12px 18px; text-transform: uppercase;
+  }
+  .brand .n { color: color-mix(in srgb, var(--charcoal) 75%, CanvasText); }
+  .brand .a { color: var(--amber); }
+  .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--amber); flex: none; }
+  .dot.off { background: #888; }
+  .row { display: flex; align-items: center; justify-content: space-between; }
+  .status { color: #666; font-size: 13px; }
+  /* Toggle switch */
+  .switch { position: relative; width: 46px; height: 26px; flex: none; }
+  .switch input { opacity: 0; width: 0; height: 0; }
+  .slider {
+    position: absolute; inset: 0; cursor: pointer; border-radius: 26px;
+    background: #ccc; transition: .15s;
+  }
+  .slider::before {
+    content: ""; position: absolute; height: 20px; width: 20px; left: 3px; top: 3px;
+    background: #fff; border-radius: 50%; transition: .15s;
+  }
+  input:checked + .slider { background: var(--amber); }
+  input:checked + .slider::before { transform: translateX(20px); }
+  .count { margin-top: 10px; font-size: 13px; color: #666; }
+  .count b { color: inherit; font-size: 15px; }
+  hr { border: none; border-top: 1px solid rgba(128,128,128,.25); margin: 12px 0; }
+  h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .04em;
+       color: #888; margin: 0 0 6px; font-weight: 600; }
+  .addrow { display: flex; gap: 6px; }
+  .addrow input {
+    flex: 1; min-width: 0; font: inherit; font-size: 13px;
+    padding: 5px 8px; border: 1px solid rgba(128,128,128,.4); border-radius: 6px;
+    background: transparent; color: inherit;
+  }
+  button {
+    font: inherit; font-size: 13px; padding: 5px 10px; border: none;
+    border-radius: 6px; background: var(--amber); color: #fff; cursor: pointer;
+  }
+  button:hover { filter: brightness(.93); }
+  button.ghost { background: transparent; color: var(--amber); padding: 2px 4px; }
+  button.trusted {
+    background: transparent; border: 1px solid var(--amber);
+    color: color-mix(in srgb, var(--amber) 85%, CanvasText);
+  }
+  #siteName { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; margin-right: 8px; }
+  .err { color: #e74c3c; font-size: 12px; min-height: 15px; margin: 4px 0 0; }
+  .hint { color: var(--amber); font-size: 12px; margin: 4px 0 0; }
+  ul { list-style: none; margin: 6px 0 0; padding: 0; max-height: 120px; overflow-y: auto; }
+  li { display: flex; justify-content: space-between; align-items: center;
+       font-size: 13px; padding: 3px 0; gap: 8px; }
+  li span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  li button { background: transparent; color: #e74c3c; padding: 0 4px; font-size: 15px; line-height: 1; }
+  .meta { display: flex; justify-content: space-between; align-items: center;
+          font-size: 12px; color: #888; margin-top: 2px; }
+  .kofi {
+    display: flex; align-items: center; gap: 10px;
+    margin-top: 14px; padding: 9px 12px; border-radius: 8px;
+    background: var(--amber); color: #fff; text-decoration: none;
+    font-size: 12.5px; font-weight: 600; line-height: 1.3;
+  }
+  .kofi:hover { filter: brightness(.93); }
+  .kofi-img {
+    width: 34px; height: 34px; flex: none; border-radius: 50%;
+    object-fit: cover; border: 2px solid rgba(255, 255, 255, .9);
+  }
+</style>
+</head>
+<body>
+  <h1><span class="dot" id="dot"></span> <a class="title-link" href="https://www.nelsonagentic.com" target="_blank" rel="noopener noreferrer">T-Dog's AdBlocker</a></h1>
+  <div class="brand"><span class="n">Nelson</span> <span class="a">Agentic</span></div>
+
+  <div class="row">
+    <span class="status" id="status">Blocking enabled</span>
+    <label class="switch">
+      <input type="checkbox" id="toggle" checked>
+      <span class="slider"></span>
+    </label>
+  </div>
+  <div class="count">T-Dog Blocked: <b id="count">0</b> of Ad/Tracker Requests on this page.</div>
+
+  <hr>
+  <div id="siteSection" hidden>
+    <h2>This site</h2>
+    <div class="row">
+      <span class="status" id="siteName" title=""></span>
+      <button id="trustBtn">Trust site</button>
+    </div>
+    <p class="hint" id="siteHint" hidden>Reload the page to apply.</p>
+    <ul id="trustedList"></ul>
+    <hr>
+  </div>
+  <h2>Block a domain</h2>
+  <div class="addrow">
+    <input type="text" id="domainInput" placeholder="e.g. annoying-ads.com" spellcheck="false">
+    <button id="addBtn">Add</button>
+  </div>
+  <p class="err" id="err"></p>
+  <ul id="userList"></ul>
+
+  <hr>
+  <div class="meta">
+    <span id="listInfo">Auto-list: not fetched yet</span>
+    <button class="ghost" id="updateBtn">Update now</button>
+  </div>
+
+  <a class="kofi" href="https://ko-fi.com/nelsonagentic" target="_blank" rel="noopener noreferrer">
+    <img class="kofi-img" id="kofiImg" src="icons/icon128.png" alt="T-Dog">
+    <span>Help Support T-Dog's Mission — Supporting People in Recovery</span>
+  </a>
+
+  <script src="popup.js"></script>
+</body>
+</html>
