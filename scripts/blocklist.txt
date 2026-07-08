@@ -1,4 +1,4 @@
-# myAdBlock blocklist — one domain per line.
+# T-Dog's AdBlocker blocklist — one domain per line.
 # Matches the domain and ALL subdomains. Lines starting with # are comments.
 # After editing, run:  python3 scripts/gen_rules.py
 

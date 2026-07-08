@@ -20,7 +20,7 @@ a soft radial-amber disc so it stays legible even at 16px, and preserve the
 transparent corners around the disc. Pillow is a DEV-TIME tool only; the
 extension ships no runtime dependencies.
 
-Old badge mark: scripts/gen_icons_badge.py.  Run: python3 scripts/gen_icons.py
+Run:  python3 scripts/gen_icons.py
 """
 import os
 from PIL import Image, ImageDraw
