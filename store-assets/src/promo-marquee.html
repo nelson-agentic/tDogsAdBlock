@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  :root { --charcoal:#3f3f3f; --amber:#d99a2b; --amber-lt:#f0b94f; }
+  * { box-sizing:border-box; }
+  body {
+    margin:0; width:1400px; height:560px; overflow:hidden;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: radial-gradient(1200px 800px at 20% 25%, #4a4a4a 0%, var(--charcoal) 50%, #2a2a2a 100%);
+    color:#fff; position:relative;
+  }
+  .logo { position:absolute; top:190px; left:100px; width:180px; height:180px; border-radius:50%;
+          box-shadow:0 24px 60px rgba(0,0,0,.5); }
+  .content { position:absolute; top:110px; left:340px; right:90px; }
+  .brand { display:flex; align-items:baseline; gap:12px; margin-bottom:16px; }
+  .brand .name { font-size:26px; font-weight:800; }
+  .brand .sub { font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color:var(--amber-lt); }
+  .saystag { display:inline-flex; align-items:center; margin-bottom:16px;
+             background:rgba(217,154,43,.16); border:1px solid rgba(217,154,43,.55);
+             color:var(--amber-lt); font-size:13px; font-weight:800; letter-spacing:.08em;
+             text-transform:uppercase; padding:7px 15px; border-radius:5px 16px 16px 16px; }
+  h1 { margin:0 0 20px; font-size:52px; font-weight:800; line-height:1.1; letter-spacing:-.01em; }
+  h1 .hl { color:var(--amber-lt); }
+  p.tag { font-size:19px; color:#d2d2d2; margin:0 0 26px; max-width:760px; }
+  .pills { display:flex; gap:14px; }
+  .pill { border:1px solid rgba(217,154,43,.55); background:rgba(217,154,43,.14);
+          color:var(--amber-lt); font-size:14px; font-weight:700; padding:8px 16px; border-radius:999px; }
+</style>
+</head>
+<body>
+  <img class="logo" src="file:///home/benjamin/projects/Chrome/extentions/tDogsAdBlock/icons/icon128.png">
+  <div class="content">
+    <div class="brand"><span class="name">T-Dog's AdBlocker</span><span class="sub">Nelson Agentic</span></div>
+    <div class="saystag">T-Dog Says:</div>
+    <h1>Block Ads &amp; Trackers, <span class="hl">Automatically.</span></h1>
+    <p class="tag">A fast, dependency-free blocker powered by Chrome's native
+      declarativeNetRequest engine &mdash; 330,000+ domains, zero per-request JavaScript.</p>
+    <div class="pills">
+      <span class="pill">Native &amp; fast</span>
+      <span class="pill">Auto-updating list</span>
+      <span class="pill">No host permissions</span>
+    </div>
+  </div>
+</body>
+</html>

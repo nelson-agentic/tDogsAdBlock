@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  :root { --charcoal:#3f3f3f; --amber:#d99a2b; --amber-lt:#f0b94f; }
+  * { box-sizing:border-box; }
+  body {
+    margin:0; width:1280px; height:800px; overflow:hidden;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: radial-gradient(1100px 700px at 50% 0%, #4a4a4a 0%, var(--charcoal) 45%, #2c2c2c 100%);
+    color:#fff;
+  }
+  h1 { font-size:40px; font-weight:800; text-align:center; margin:16px 0 40px; letter-spacing:-.01em; }
+  h1 .hl { color:var(--amber-lt); }
+  .saywrap { text-align:center; margin-top:56px; }
+  .saystag { display:inline-flex; align-items:center;
+             background:rgba(217,154,43,.16); border:1px solid rgba(217,154,43,.55);
+             color:var(--amber-lt); font-size:12px; font-weight:800; letter-spacing:.08em;
+             text-transform:uppercase; padding:6px 13px; border-radius:5px 14px 14px 14px; }
+
+  .cols { display:flex; gap:36px; justify-content:center; }
+  .col { width:560px; }
+  .label { display:flex; align-items:center; gap:10px; margin-bottom:14px; font-size:15px; font-weight:700; }
+  .label .badge {
+    width:24px; height:24px; border-radius:50%; display:flex; align-items:center;
+    justify-content:center; font-size:14px; font-weight:900; color:#fff;
+  }
+  .badge.bad { background:#c0392b; }
+  .badge.good { background: var(--amber); }
+
+  .page { border-radius:12px; overflow:hidden; box-shadow:0 30px 70px rgba(0,0,0,.5); }
+  .page .chrome-bar { height:36px; background:#2b2b2b; display:flex; align-items:center; gap:6px; padding:0 12px; }
+  .dot3 { width:9px; height:9px; border-radius:50%; }
+  .d1{background:#ff5f57} .d2{background:#febc2e} .d3{background:#28c840}
+  .body-area { background:#fff; padding:18px; height:400px; }
+
+  /* messy version */
+  .messy .banner { height:64px; background:repeating-linear-gradient(45deg,#ffdca8,#ffdca8 8px,#ffce85 8px,#ffce85 16px);
+    border:2px solid #e08a1f; border-radius:6px; display:flex; align-items:center; justify-content:center;
+    font-size:11px; font-weight:800; color:#8a4e05; letter-spacing:.06em; margin-bottom:12px; }
+  .messy .ln { height:9px; background:#eee; border-radius:5px; margin-bottom:9px; }
+  .messy .ln.w1{width:92%} .messy .ln.w2{width:80%} .messy .ln.w3{width:70%}
+  .messy .popad { position:relative; margin:14px 0; height:70px; border-radius:6px; border:2px dashed #e74c3c;
+    background:#fdecea; display:flex; align-items:center; justify-content:center; font-size:11px;
+    font-weight:800; color:#c0392b; letter-spacing:.06em; }
+  .messy .side { display:flex; gap:10px; margin-top:12px; }
+  .messy .side .box { flex:1; height:56px; border-radius:6px; background:#ffe2b0; border:2px solid #e08a1f; }
+
+  /* clean version */
+  .clean .ln { height:9px; background:#eee; border-radius:5px; margin-bottom:11px; }
+  .clean .ln.w1{width:92%} .clean .ln.w2{width:80%} .clean .ln.w3{width:86%} .clean .ln.w4{width:60%}
+  .clean .spacer { height:20px; }
+  .clean .tick { display:flex; align-items:center; gap:10px; margin-top:22px; color:#2a8a3e; font-size:13px; font-weight:700; }
+  .clean .tick .c { width:22px; height:22px; border-radius:50%; background:#2a8a3e; color:#fff;
+    display:flex; align-items:center; justify-content:center; font-size:12px; flex:none; }
+
+  .foot { text-align:center; margin-top:34px; font-size:15px; color:#ccc; }
+  .foot b { color: var(--amber-lt); }
+</style>
+</head>
+<body>
+  <div class="saywrap"><span class="saystag">T-Dog Says:</span></div>
+  <h1>Same Page. <span class="hl">Zero Clutter.</span></h1>
+
+  <div class="cols">
+    <div class="col">
+      <div class="label"><span class="badge bad">&#10005;</span> Without T-Dog's AdBlocker</div>
+      <div class="page">
+        <div class="chrome-bar"><span class="dot3 d1"></span><span class="dot3 d2"></span><span class="dot3 d3"></span></div>
+        <div class="body-area messy">
+          <div class="banner">BANNER AD &mdash; 728&times;90</div>
+          <div class="ln w1"></div><div class="ln w2"></div><div class="ln w3"></div>
+          <div class="popad">POP-UNDER AD</div>
+          <div class="ln w1"></div><div class="ln w2"></div>
+          <div class="side"><div class="box"></div><div class="box"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <div class="label"><span class="badge good">&#10003;</span> With T-Dog's AdBlocker</div>
+      <div class="page">
+        <div class="chrome-bar"><span class="dot3 d1"></span><span class="dot3 d2"></span><span class="dot3 d3"></span></div>
+        <div class="body-area clean">
+          <div class="ln w1"></div><div class="ln w2"></div><div class="ln w3"></div><div class="ln w4"></div>
+          <div class="spacer"></div>
+          <div class="ln w1"></div><div class="ln w2"></div><div class="ln w3"></div>
+          <div class="tick"><span class="c">&#10003;</span> 12 ads &amp; trackers blocked, silently.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p class="foot">No pop-ups. No banners. No tracking scripts. Just <b>the content you came for.</b></p>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  :root { --charcoal:#3f3f3f; --amber:#d99a2b; --amber-lt:#f0b94f; }
+  * { box-sizing: border-box; }
+  body {
+    margin:0; width:1280px; height:800px; overflow:hidden;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: radial-gradient(1100px 700px at 15% 15%, #4a4a4a 0%, var(--charcoal) 45%, #2c2c2c 100%);
+    position: relative;
+  }
+  /* Left copy block */
+  .copy { position:absolute; top:120px; left:80px; width:460px; color:#fff; }
+  .brandmark { display:flex; align-items:center; gap:12px; margin-bottom:36px; }
+  .brandmark img { width:52px; height:52px; border-radius:50%; }
+  .brandmark .name { font-size:20px; font-weight:800; letter-spacing:.02em; }
+  .brandmark .sub { font-size:11px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; color: var(--amber-lt); margin-top:2px; }
+  .saystag { display:inline-flex; align-items:center; margin-bottom:18px;
+             background:rgba(217,154,43,.16); border:1px solid rgba(217,154,43,.55);
+             color:var(--amber-lt); font-size:12px; font-weight:800; letter-spacing:.08em;
+             text-transform:uppercase; padding:6px 13px; border-radius:5px 14px 14px 14px; }
+  h1 { font-size:52px; line-height:1.08; margin:0 0 22px; font-weight:800; letter-spacing:-.01em; }
+  h1 .hl { color: var(--amber-lt); }
+  p.tag { font-size:19px; line-height:1.5; color:#d8d8d8; margin:0 0 34px; }
+  ul.feat { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:16px; }
+  ul.feat li { display:flex; align-items:center; gap:14px; font-size:16.5px; color:#eee; }
+  ul.feat .ico {
+    width:30px; height:30px; border-radius:8px; background: rgba(217,154,43,.18);
+    border:1px solid rgba(217,154,43,.5); display:flex; align-items:center; justify-content:center;
+    color: var(--amber-lt); font-size:15px; flex:none;
+  }
+
+  /* Browser mockup */
+  .browser {
+    position:absolute; top:70px; left:600px; width:610px; height:660px;
+    background:#1f1f1f; border-radius:14px; box-shadow: 0 40px 90px rgba(0,0,0,.55);
+    overflow:hidden; border: 1px solid rgba(255,255,255,.06);
+  }
+  .chrome-bar { height:44px; background:#2b2b2b; display:flex; align-items:center; gap:8px; padding:0 14px; }
+  .dot3 { width:11px; height:11px; border-radius:50%; }
+  .d1{background:#ff5f57} .d2{background:#febc2e} .d3{background:#28c840}
+  .url { margin-left:14px; flex:1; background:#3a3a3a; border-radius:7px; height:26px;
+         display:flex; align-items:center; padding:0 12px; color:#aaa; font-size:12.5px; gap:6px; }
+  .url svg { width:12px; height:12px; }
+  .page { position:relative; height:616px; background:#f2f2f0; }
+  .banner { height:150px; background:linear-gradient(135deg,#e7e7e4,#d9d9d5); display:flex; align-items:center; padding:0 26px; }
+  .banner .tile { width:64px; height:64px; border-radius:12px; background:#cfcfca; }
+  .banner .lines { margin-left:16px; flex:1; }
+  .banner .ln { height:12px; background:#c7c7c2; border-radius:6px; margin-bottom:9px; }
+  .banner .ln.w1{width:78%} .banner .ln.w2{width:55%} .banner .ln.w3{width:64%}
+  .adblock { position:relative; margin:20px 26px; height:64px; border-radius:9px;
+             border:1.5px dashed #c9c9c9; display:flex; align-items:center; justify-content:center;
+             color:#b7b7b2; font-size:12px; letter-spacing:.08em; text-transform:uppercase; font-weight:700; }
+  .adblock::before { content:"BLOCKED"; }
+  .adblock .x { position:absolute; right:14px; top:50%; transform:translateY(-50%);
+                width:22px; height:22px; border-radius:50%; background:var(--amber);
+                color:#fff; font-size:13px; display:flex; align-items:center; justify-content:center; font-weight:900; }
+  .textblock { margin:22px 26px; }
+  .textblock .ln { height:10px; background:#e0e0dc; border-radius:5px; margin-bottom:10px; }
+  .textblock .ln.w1{width:92%} .textblock .ln.w2{width:85%} .textblock .ln.w3{width:70%}
+
+  /* Popup callout */
+  .popup {
+    position:absolute; top:64px; right:20px; width:250px;
+    background:#fff; border-radius:12px; box-shadow:0 24px 60px rgba(0,0,0,.5);
+    padding:14px 16px 16px; font-size:12px; color:#333;
+  }
+  .popup h2 { font-size:13px; margin:0 0 2px; display:flex; align-items:center; gap:6px; }
+  .popup .pdot { width:9px; height:9px; border-radius:50%; background:var(--amber); flex:none; }
+  .popup .brand2 { font-size:8.5px; font-weight:800; letter-spacing:.12em; margin:0 0 10px 15px; text-transform:uppercase; color:#999; }
+  .popup .row { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+  .popup .status { color:#666; font-size:11.5px; }
+  .popup .sw { width:34px; height:19px; border-radius:20px; background:var(--amber); position:relative; flex:none; }
+  .popup .sw::after { content:""; position:absolute; width:14px; height:14px; border-radius:50%; background:#fff; right:2.5px; top:2.5px; }
+  .popup .count { font-size:11.5px; color:#666; margin-bottom:10px; }
+  .popup .count b { color:#222; font-size:14px; }
+  .popup hr { border:none; border-top:1px solid #eee; margin:10px 0; }
+  .popup .stat { display:flex; align-items:baseline; gap:6px; }
+  .popup .stat b { font-size:26px; color: var(--amber); }
+  .popup .stat span { font-size:11px; color:#888; }
+</style>
+</head>
+<body>
+
+  <div class="copy">
+    <div class="brandmark">
+      <img src="file:///home/benjamin/projects/Chrome/extentions/tDogsAdBlock/icons/icon128.png">
+      <div>
+        <div class="name">T-Dog's AdBlocker</div>
+        <div class="sub">Nelson Agentic</div>
+      </div>
+    </div>
+    <div class="saystag">T-Dog Says:</div>
+    <h1>Block Ads &amp;<br>Trackers, <span class="hl">Automatically.</span></h1>
+    <p class="tag">A fast, lightweight ad &amp; tracker blocker with zero
+      bloat &mdash; powered by Chrome's native blocking engine.</p>
+    <ul class="feat">
+      <li><span class="ico">&#10003;</span> 330,000+ blocked domains, auto-updated daily</li>
+      <li><span class="ico">&#9889;</span> Native <code>declarativeNetRequest</code> &mdash; zero per-request JS</li>
+      <li><span class="ico">&#128274;</span> No host permissions &mdash; can't read your page content</li>
+    </ul>
+  </div>
+
+  <div class="browser">
+    <div class="chrome-bar">
+      <span class="dot3 d1"></span><span class="dot3 d2"></span><span class="dot3 d3"></span>
+      <div class="url">example-news-site.com</div>
+    </div>
+    <div class="page">
+      <div class="banner">
+        <div class="tile"></div>
+        <div class="lines">
+          <div class="ln w1"></div><div class="ln w2"></div><div class="ln w3"></div>
+        </div>
+      </div>
+      <div class="adblock"><span class="x">&#10005;</span></div>
+      <div class="textblock">
+        <div class="ln w1"></div><div class="ln w2"></div><div class="ln w3"></div>
+      </div>
+      <div class="adblock"><span class="x">&#10005;</span></div>
+      <div class="textblock">
+        <div class="ln w1"></div><div class="ln w2"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="popup">
+    <h2><span class="pdot"></span>T-Dog's AdBlocker</h2>
+    <div class="brand2">Nelson Agentic</div>
+    <div class="row">
+      <span class="status">Blocking enabled</span>
+      <span class="sw"></span>
+    </div>
+    <hr>
+    <div class="stat"><b>47</b><span>ads &amp; trackers<br>blocked on this page</span></div>
+  </div>
+
+</body>
+</html>

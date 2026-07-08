@@ -1,0 +1,38 @@
+SINGLE PURPOSE
+
+T-Dog's AdBlocker blocks advertising and tracking network requests using Chrome's native declarativeNetRequest API.
+
+
+PERMISSION JUSTIFICATIONS
+
+declarativeNetRequest:
+Used to block ads and tracker requests natively via declarative rules. The extension does not read, intercept, or modify the content of any request or page.
+
+activeTab:
+Used to identify the current tab's site so the popup can show and manage a per-site "Trust this site" allowlist entry when the user opens the extension.
+
+storage:
+Used to store the user's manual block list, trusted-sites list, and extension settings locally in the browser.
+
+alarms:
+Used to schedule a once-daily background fetch of the auto-updating blocklist file.
+
+
+REMOTE CODE
+
+No. The daily blocklist fetch downloads a static text/data file, not executable code.
+
+
+DATA USAGE
+
+Does not collect or use user data.
+
+
+PRIVACY POLICY URL
+
+https://raw.githubusercontent.com/nelson-agentic/tDogsAdBlock/main/PRIVACY.md
+
+
+NOTES FOR REVIEWER (if a testing-instructions field appears)
+
+No login or setup required. On install, the extension blocks ads/trackers on any page via declarativeNetRequest — visit any ad-heavy site and the popup shows a live blocked-request count. The daily background fetch (raw.githubusercontent.com) pulls a static domain-list text file only, not code.

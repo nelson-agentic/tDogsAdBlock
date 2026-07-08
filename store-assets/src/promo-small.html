@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  :root { --charcoal:#3f3f3f; --amber:#d99a2b; --amber-lt:#f0b94f; }
+  * { box-sizing:border-box; }
+  body {
+    margin:0; width:440px; height:280px; overflow:hidden;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: radial-gradient(420px 320px at 25% 20%, #4a4a4a 0%, var(--charcoal) 55%, #2a2a2a 100%);
+    color:#fff; position:relative;
+  }
+  .logo { position:absolute; top:30px; left:34px; width:68px; height:68px; border-radius:50%;
+          box-shadow:0 10px 26px rgba(0,0,0,.45); }
+  .name { position:absolute; top:38px; left:114px; font-size:19px; font-weight:800; }
+  .sub { position:absolute; top:64px; left:114px; font-size:10px; font-weight:800;
+         letter-spacing:.16em; text-transform:uppercase; color:var(--amber-lt); }
+  .saystag { position:absolute; top:104px; left:34px; display:inline-flex; align-items:center;
+             background:rgba(217,154,43,.16); border:1px solid rgba(217,154,43,.55);
+             color:var(--amber-lt); font-size:10.5px; font-weight:800; letter-spacing:.07em;
+             text-transform:uppercase; padding:5px 11px; border-radius:4px 12px 12px 12px; }
+  h1 { position:absolute; top:138px; left:34px; right:34px; margin:0; font-size:27px;
+       font-weight:800; line-height:1.15; letter-spacing:-.01em; }
+  h1 .hl { color:var(--amber-lt); }
+  p { position:absolute; top:228px; left:34px; right:34px; margin:0; font-size:13px; color:#ccc; }
+</style>
+</head>
+<body>
+  <img class="logo" src="file:///home/benjamin/projects/Chrome/extentions/tDogsAdBlock/icons/icon128.png">
+  <div class="name">T-Dog's AdBlocker</div>
+  <div class="sub">Nelson Agentic</div>
+  <div class="saystag">T-Dog Says:</div>
+  <h1>Block Ads &amp; Trackers, <span class="hl">Automatically.</span></h1>
+  <p>Fast. Native. Zero bloat.</p>
+</body>
+</html>
