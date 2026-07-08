@@ -58,8 +58,8 @@ location with a revised effective date.
 
 ## Contact
 
-Questions about this policy or the extension can be sent via
-[Ko-fi](https://ko-fi.com/nelsonagentic) or through the
+Questions about this policy or the extension can be sent via email to:
+admin@nelsonagentic.com or through the
 [GitHub repository](https://github.com/nelson-agentic/tDogsAdBlock).
 
 ---
