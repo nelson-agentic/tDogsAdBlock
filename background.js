@@ -142,6 +142,9 @@ async function updateRemoteList() {
       if (!DOMAIN_RE.test(token) || seen.has(token)) continue;
       seen.add(token);
       domains.push(token);
+      // Cap at parse time too, so a hostile/bogus payload can't balloon
+      // memory or the storage.local quota before cleanDomains() runs.
+      if (domains.length >= MAX_DOMAINS) break;
     }
     if (domains.length < 100) return false; // refuse a bogus/truncated payload
     await chrome.storage.local.set({
